@@ -1,1 +1,2 @@
-yes
+def test():
+    Balance = open('data')
