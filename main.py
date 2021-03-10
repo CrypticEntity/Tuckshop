@@ -22,4 +22,6 @@ class button():
         return False
 
 menu = [ button(7, 7, 7, 7, 7, 0),
-         button(7, 7, 7, 7, 7, 0)]
+        ]
+
+
