@@ -9,3 +9,7 @@ def WRITE(balance):
     balanceInput.write(str(balance))
     balanceInput.close()
 
+def BACNKRUPT(balance, cost):
+    if balance - cost < 0:
+        return balance, False
+    return balance - cost, True
