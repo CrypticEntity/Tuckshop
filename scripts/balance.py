@@ -1,8 +1,11 @@
 def READ():
-    dataFile = open("data/balance", 'r')
-    balance = float(dataFile.read())
-    dataFile.close()
+    balanceFile = open("data/balance", 'r')
+    balance = float(balanceFile.read())
+    balanceFile.close()
     return balance
 
-def DUMP(balance):
-    return balance
+def WRITE(balance):
+    balanceInput = open('data/balance', 'w')
+    balanceInput.write(str(balance))
+    balanceInput.close()
+
