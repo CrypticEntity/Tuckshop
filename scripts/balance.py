@@ -4,9 +4,9 @@ def READ():
     balanceFile.close()
     return balance
 
-def WRITE(balance):
-    balanceInput = open('data/balance', 'w')
-    balanceInput.write(str(balance))
+def WRITE(file, data):
+    balanceInput = open(('data/' + file), 'w')
+    balanceInput.write(str(data))
     balanceInput.close()
 
 def BACNKRUPT(balance, cost):
