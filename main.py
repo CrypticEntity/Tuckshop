@@ -1,4 +1,6 @@
 import pygame
+import scripts.balance as edit
+balance = edit.READ()
 
 pygame.init()
 pygame.font.init() 
@@ -15,7 +17,7 @@ class button():
         self.cost = font.render(str(cost), False, (255, 255, 255))
         self.price = cost
         self.item = font.render(item, False, (255, 255, 255))
-        self.textItem = item
+        self.textItem = item + '\n'
     def render(self):
         pygame.draw.rect(window, (0,0,0) , (self.x, self.y, self.width, self.height))
         pygame.draw.rect(window, (255,255,255), (self.x, self.y, self.width, self.height), 3)
@@ -39,7 +41,9 @@ def draw():
 
 def inputHandle():
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: quit()
+        if event.type == pygame.QUIT:
+            edit.WRITE("balance", balance)
+            quit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 return True
@@ -52,4 +56,6 @@ while 1:
     if mouse:
         for item in menu:
             if item.collision(mousePos):
-                print(item.textItem)
+                balance, banckrupt = edit.BACNKRUPT(balance, item.price)
+                if not banckrupt:
+                    edit.WRITE("order", item.textItem, 'a')
