@@ -15,18 +15,21 @@ class button():
         self.cost = font.render(str(cost), False, (255, 255, 255))
         self.price = cost
         self.item = font.render(item, False, (255, 255, 255))
+        self.textItem = item
     def render(self):
         pygame.draw.rect(window, (0,0,0) , (self.x, self.y, self.width, self.height))
         pygame.draw.rect(window, (255,255,255), (self.x, self.y, self.width, self.height), 3)
         window.blit(self.item, (self.x + 10, self.y + 10))
         window.blit(self.cost, (self.x +  self.width - (10 + (40 * len(str(self.price)))), self.y + 10))
-    def collision(self, mousePosX, mousePosY):
-        if (mousePosX > self.x and mousePosX < self.x + self.width and mousePosY > self.y and mousePosY < self.y + self.height):
+    def collision(self, mousePos):
+        if (mousePos[0] > self.x and mousePos[0] < self.x + self.width and mousePos[1] > self.y and mousePos[1] < self.y + self.height):
             return True
         return False
 
-menu = [ button(50, 10, 500, 50, 7, "chocolate milk"),
-        ]
+menu = [ button(50, 10, 500, 50, 3.50, "chocolate milk"),
+        button(50, 70, 500, 50, 4.50, "wrap"),
+        button(50, 130, 500, 50, 3.0, "wedges"),]
+mouse = False
 
 def draw():
     window.fill((0,0,0))
@@ -34,5 +37,19 @@ def draw():
         item.render()
     pygame.display.flip()
 
+def inputHandle():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: quit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                return True
+    return False
+
 while 1:
+    mousePos = pygame.mouse.get_pos()
     draw()
+    mouse = inputHandle()
+    if mouse:
+        for item in menu:
+            if item.collision(mousePos):
+                print(item.textItem)
