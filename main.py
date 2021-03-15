@@ -5,7 +5,7 @@ balance = edit.READ()
 pygame.init()
 pygame.font.init() 
 font = pygame.font.Font("data/font.ttf", 40)
-window = pygame.display.set_mode((600, 300))
+window = pygame.display.set_mode((600, 560))
 pygame.display.set_caption("Tuckshop")
 
 class button():
@@ -29,8 +29,14 @@ class button():
         return False
 
 menu = [ button(50, 10, 500, 50, 3.50, "chocolate milk"),
-        button(50, 70, 500, 50, 4.50, "wrap"),
-        button(50, 130, 500, 50, 3.0, "wedges"),]
+        button(50, 70, 500, 50, 4.50, "chicken wrap"),
+        button(50, 130, 500, 50, 3.0, "wedges"),
+        button(50, 190, 500, 50, 1.50, "chicken strip"),
+        button(50, 250, 500, 50, 3.50, "milo cup"),
+        button(50, 310, 500, 50, 2.50, "orchy"),
+        button(50, 370, 500, 50, 4.50, "pie"),
+        button(50, 430, 500, 50, 4.00, "cheses tostie"),
+        button(50, 490, 500, 50, 2.00, "bottled water"),]
 mouse = False
 
 def draw():
@@ -41,9 +47,7 @@ def draw():
 
 def inputHandle():
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            edit.WRITE("balance", balance)
-            quit()
+        if event.type == pygame.QUIT: quit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 return True
@@ -59,3 +63,4 @@ while 1:
                 balance, banckrupt = edit.BACNKRUPT(balance, item.price)
                 if not banckrupt:
                     edit.WRITE("order", item.textItem, 'a')
+                    edit.WRITE("balance", balance)
