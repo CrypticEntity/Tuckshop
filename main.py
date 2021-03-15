@@ -5,7 +5,7 @@ balance = edit.READ()
 pygame.init()
 pygame.font.init() 
 font = pygame.font.Font("data/font.ttf", 40)
-window = pygame.display.set_mode((600, 560))
+window = pygame.display.set_mode((600, 610))
 pygame.display.set_caption("Tuckshop")
 
 class button():
@@ -27,6 +27,9 @@ class button():
         if (mousePos[0] > self.x and mousePos[0] < self.x + self.width and mousePos[1] > self.y and mousePos[1] < self.y + self.height):
             return True
         return False
+    def changeValue(self, newVal):
+        self.price = newVal
+        self.cost = font.render(str(newVal), False, (255, 255, 255))
 
 menu = [ button(50, 10, 500, 50, 3.50, "chocolate milk"),
         button(50, 70, 500, 50, 4.50, "chicken wrap"),
@@ -37,12 +40,14 @@ menu = [ button(50, 10, 500, 50, 3.50, "chocolate milk"),
         button(50, 370, 500, 50, 4.50, "pie"),
         button(50, 430, 500, 50, 4.00, "cheses tostie"),
         button(50, 490, 500, 50, 2.00, "bottled water"),]
+changeButton = button(50, 550, 500, 50, balance, "change balance")
 mouse = False
 
 def draw():
     window.fill((0,0,0))
     for item in menu:
         item.render()
+    changeButton.render()
     pygame.display.flip()
 
 def inputHandle():
@@ -52,6 +57,9 @@ def inputHandle():
             if event.button == 1:
                 return True
     return False
+
+def change():
+    return 1
 
 while 1:
     mousePos = pygame.mouse.get_pos()
@@ -64,3 +72,7 @@ while 1:
                 if not banckrupt:
                     edit.WRITE("order", item.textItem, 'a')
                     edit.WRITE("balance", balance)
+                    changeButton.changeValue(balance)
+        if changeButton.collision(mousePos):
+            balance += change()
+            changeButton.changeValue(balance)
