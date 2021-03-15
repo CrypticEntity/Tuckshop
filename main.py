@@ -59,7 +59,18 @@ def inputHandle():
     return False
 
 def change():
-    return 1
+    ammount = 0
+    window.fill((22, 22, 22))
+    pygame.display.flip()
+    while 1:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    ammount += 1
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_enter:
+                    return ammount
+    return ammount
 
 while 1:
     mousePos = pygame.mouse.get_pos()
@@ -76,3 +87,4 @@ while 1:
         if changeButton.collision(mousePos):
             balance += change()
             changeButton.changeValue(balance)
+    pygame.time.delay(200)
