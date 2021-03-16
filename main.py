@@ -63,6 +63,8 @@ def change():
     window.fill((22, 22, 22))
     pygame.display.flip()
     while 1:
+        ammountText = font.render(str(ammount), False, (255, 255, 255))
+        window.fill((22, 22, 22))
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
@@ -87,6 +89,9 @@ def change():
                     ammount = ammount * 10 + 0.08
                 if event.key == pygame.K_0:
                     ammount = ammount * 10
+        textX, textY = pygame.display.get_window_size()
+        window.blit(ammountText, (textX/2, textY/2))
+        pygame.display.flip()
     return ammount
 
 while 1:
