@@ -63,7 +63,7 @@ def change():
     window.fill((22, 22, 22))
     pygame.display.flip()
     while 1:
-        ammountText = font.render(str(ammount), False, (255, 255, 255))
+        ammountText = font.render('$'+str(ammount), False, (255, 255, 255))
         window.fill((22, 22, 22))
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
