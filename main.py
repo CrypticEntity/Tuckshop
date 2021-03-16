@@ -68,23 +68,23 @@ def change():
                 if event.key == pygame.K_RETURN:
                     return ammount
                 if event.key == pygame.K_1:
-                    ammount = ammount * 10 + 1
+                    ammount = ammount * 10 + 0.01
                 if event.key == pygame.K_2:
-                    ammount = ammount * 10 + 2
+                    ammount = ammount * 10 + 0.02
                 if event.key == pygame.K_3:
-                    ammount = ammount * 10 + 3
+                    ammount = ammount * 10 + 0.03
                 if event.key == pygame.K_4:
-                    ammount = ammount * 10 + 4
+                    ammount = ammount * 10 + 0.04
                 if event.key == pygame.K_5:
-                    ammount = ammount * 10 + 5
+                    ammount = ammount * 10 + 0.05
                 if event.key == pygame.K_6:
-                    ammount = ammount * 10 + 6
+                    ammount = ammount * 10 + 0.06
                 if event.key == pygame.K_7:
-                    ammount = ammount * 10 + 7
+                    ammount = ammount * 10 + 0.07
                 if event.key == pygame.K_8:
-                    ammount = ammount * 10 + 8
+                    ammount = ammount * 10 + 0.08
                 if event.key == pygame.K_9:
-                    ammount = ammount * 10 + 8
+                    ammount = ammount * 10 + 0.08
                 if event.key == pygame.K_0:
                     ammount = ammount * 10
     return ammount
@@ -102,6 +102,6 @@ while 1:
                     edit.WRITE("balance", balance)
                     changeButton.changeValue(balance)
         if changeButton.collision(mousePos):
-            balance += change()
+            balance += round(change(), 2)
             changeButton.changeValue(balance)
-    pygame.time.delay(200)
+    pygame.time.delay(20)
