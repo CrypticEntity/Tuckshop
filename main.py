@@ -14,7 +14,7 @@ class button():
         self.y = y
         self.width = width
         self.height = height
-        self.cost = font.render(str(cost), False, (255, 255, 255))
+        self.cost = font.render('$'+str(cost), False, (255, 255, 255))
         self.price = cost
         self.item = font.render(item, False, (255, 255, 255))
         self.textItem = item + '\n'
@@ -22,24 +22,24 @@ class button():
         pygame.draw.rect(window, (0,0,0) , (self.x, self.y, self.width, self.height))
         pygame.draw.rect(window, (255,255,255), (self.x, self.y, self.width, self.height), 3)
         window.blit(self.item, (self.x + 10, self.y + 10))
-        window.blit(self.cost, (self.x +  self.width - 80, self.y + 10))
+        window.blit(self.cost, (self.x + self.width - len(str(self.price)) * 20 - 30, self.y + 10))
     def collision(self, mousePos):
         if (mousePos[0] > self.x and mousePos[0] < self.x + self.width and mousePos[1] > self.y and mousePos[1] < self.y + self.height):
             return True
         return False
     def changeValue(self, newVal):
         self.price = newVal
-        self.cost = font.render(str(newVal), False, (255, 255, 255))
+        self.cost = font.render('$'+str(newVal), False, (255, 255, 255))
 
-menu = [ button(50, 10, 500, 50, 3.50, "chocolate milk"),
-        button(50, 70, 500, 50, 4.50, "chicken wrap"),
-        button(50, 130, 500, 50, 3.0, "wedges"),
-        button(50, 190, 500, 50, 1.50, "chicken strip"),
-        button(50, 250, 500, 50, 3.50, "milo cup"),
-        button(50, 310, 500, 50, 2.50, "orchy"),
-        button(50, 370, 500, 50, 4.50, "pie"),
-        button(50, 430, 500, 50, 4.00, "cheses tostie"),
-        button(50, 490, 500, 50, 2.00, "bottled water"),]
+menu = [ button(50, 10, 500, 50, 3.5, "chocolate milk"),
+        button(50, 70, 500, 50, 4.5, "chicken wrap"),
+        button(50, 130, 500, 50, 3., "wedges"),
+        button(50, 190, 500, 50, 1.5, "chicken strip"),
+        button(50, 250, 500, 50, 3.5, "milo cup"),
+        button(50, 310, 500, 50, 2.5, "orchy"),
+        button(50, 370, 500, 50, 4.5, "pie"),
+        button(50, 430, 500, 50, 4.0, "cheses tostie"),
+        button(50, 490, 500, 50, 2.0, "bottled water"),]
 changeButton = button(50, 550, 500, 50, balance, "change balance")
 mouse = False
 
@@ -86,7 +86,7 @@ def change():
                 if event.key == pygame.K_8:
                     ammount = ammount * 10 + 0.08
                 if event.key == pygame.K_9:
-                    ammount = ammount * 10 + 0.08
+                    ammount = ammount * 10 + 0.09
                 if event.key == pygame.K_0:
                     ammount = ammount * 10
         textX, textY = pygame.display.get_window_size()
@@ -109,4 +109,5 @@ while 1:
         if changeButton.collision(mousePos):
             balance += round(change(), 2)
             changeButton.changeValue(balance)
+            edit.WRITE("balance", balance)
     pygame.time.delay(20)
