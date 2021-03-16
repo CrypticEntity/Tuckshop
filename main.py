@@ -22,7 +22,7 @@ class button():
         pygame.draw.rect(window, (0,0,0) , (self.x, self.y, self.width, self.height))
         pygame.draw.rect(window, (255,255,255), (self.x, self.y, self.width, self.height), 3)
         window.blit(self.item, (self.x + 10, self.y + 10))
-        window.blit(self.cost, (self.x +  self.width - (10 + (40 * len(str(self.price)))), self.y + 10))
+        window.blit(self.cost, (self.x +  self.width - 80, self.y + 10))
     def collision(self, mousePos):
         if (mousePos[0] > self.x and mousePos[0] < self.x + self.width and mousePos[1] > self.y and mousePos[1] < self.y + self.height):
             return True
@@ -64,12 +64,29 @@ def change():
     pygame.display.flip()
     while 1:
         for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    ammount += 1
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_enter:
+                if event.key == pygame.K_RETURN:
                     return ammount
+                if event.key == pygame.K_1:
+                    ammount = ammount * 10 + 1
+                if event.key == pygame.K_2:
+                    ammount = ammount * 10 + 2
+                if event.key == pygame.K_3:
+                    ammount = ammount * 10 + 3
+                if event.key == pygame.K_4:
+                    ammount = ammount * 10 + 4
+                if event.key == pygame.K_5:
+                    ammount = ammount * 10 + 5
+                if event.key == pygame.K_6:
+                    ammount = ammount * 10 + 6
+                if event.key == pygame.K_7:
+                    ammount = ammount * 10 + 7
+                if event.key == pygame.K_8:
+                    ammount = ammount * 10 + 8
+                if event.key == pygame.K_9:
+                    ammount = ammount * 10 + 8
+                if event.key == pygame.K_0:
+                    ammount = ammount * 10
     return ammount
 
 while 1:
