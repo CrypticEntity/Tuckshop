@@ -69,25 +69,28 @@ def change():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     return ammount
-                if event.key == pygame.K_1:
+                elif event.key == pygame.K_BACKSPACE:
+                    ammount = int(ammount * 10)
+                    ammount /= 100
+                elif event.key == pygame.K_1:
                     ammount = ammount * 10 + 0.01
-                if event.key == pygame.K_2:
+                elif event.key == pygame.K_2:
                     ammount = ammount * 10 + 0.02
-                if event.key == pygame.K_3:
+                elif event.key == pygame.K_3:
                     ammount = ammount * 10 + 0.03
-                if event.key == pygame.K_4:
+                elif event.key == pygame.K_4:
                     ammount = ammount * 10 + 0.04
-                if event.key == pygame.K_5:
+                elif event.key == pygame.K_5:
                     ammount = ammount * 10 + 0.05
-                if event.key == pygame.K_6:
+                elif event.key == pygame.K_6:
                     ammount = ammount * 10 + 0.06
-                if event.key == pygame.K_7:
+                elif event.key == pygame.K_7:
                     ammount = ammount * 10 + 0.07
-                if event.key == pygame.K_8:
+                elif event.key == pygame.K_8:
                     ammount = ammount * 10 + 0.08
-                if event.key == pygame.K_9:
+                elif event.key == pygame.K_9:
                     ammount = ammount * 10 + 0.09
-                if event.key == pygame.K_0:
+                elif event.key == pygame.K_0:
                     ammount = ammount * 10
         textX, textY = pygame.display.get_window_size()
         window.blit(ammountText, (textX/2, textY/2))
