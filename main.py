@@ -91,7 +91,9 @@ def change():
                 elif event.key == pygame.K_9:
                     ammount = ammount * 10 + 0.09
                 elif event.key == pygame.K_0:
-                    ammount = ammount * 10
+                    ammount *= 10
+                elif event.key == pygame.K_MINUS:
+                    ammount *= -1
         textX, textY = pygame.display.get_window_size()
         window.blit(ammountText, (textX/2, textY/2))
         pygame.display.flip()
