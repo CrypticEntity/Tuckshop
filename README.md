@@ -2,5 +2,9 @@
  Tuckshop python program
 
 ## Aims
- This program is a python/pygame program used to creat a gui system for ordering meals from the school tuckshop. 
- It was created for suff to o in the digital teconolagy class.
+ + Use **Python** to create logic for ordering items from a tuckshop menu
+ + Use **Pygame** to create a [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) for ordering items from the tuckshop
+
+## Tecnologies
+ + [Python](https://www.python.org)
+ + [Pygame](https://www.pygame.org/wiki/about)
