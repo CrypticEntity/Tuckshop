@@ -2,7 +2,8 @@ def READ():
     try:
         balanceFile = open("data/balance", "r")
     except:
-        return 0
+        WRITE("balance", 0)
+        balanceFile = open("data/balance", "r")
     balance = float(balanceFile.read())
     balanceFile.close()
     return balance
